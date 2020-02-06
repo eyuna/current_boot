@@ -13,4 +13,5 @@ public interface KeywordService {
 	public List<KeywordSort> selectMajorInit();
 	public List<KeywordSort> selectSmallInit(int keywordRef);
 	public List<StoreInfoVO> selectInfoByCode(int keywordCode);
+	public List<StoreInfoVO> selectStoreByWord(String word);
 }

@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.querydsl.core.annotations.QueryProjection;
+
 @Entity
 @Table(name = "store_info")
 public class StoreInfoVO {
@@ -22,7 +24,7 @@ public class StoreInfoVO {
 	@Column(name="adr_full")
 	private String adrFull;
 	@Column(name="keyword_code")
-	private int keywordCode;
+	private Integer keywordCode;
 
 	
 	public int getIdx() {
@@ -49,10 +51,10 @@ public class StoreInfoVO {
 	public void setAdrFull(String adrFull) {
 		this.adrFull = adrFull;
 	}
-	public int getKeywordCode() {
+	public Integer getKeywordCode() {
 		return keywordCode;
 	}
-	public void setKeywordCode(int keywordCode) {
+	public void setKeywordCode(Integer keywordCode) {
 		this.keywordCode = keywordCode;
 	}
 	

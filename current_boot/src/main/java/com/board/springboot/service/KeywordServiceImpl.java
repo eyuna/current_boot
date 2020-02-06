@@ -49,6 +49,11 @@ public class KeywordServiceImpl implements KeywordService {
 	}
 	
 	@Override
+	public List<StoreInfoVO> selectStoreByWord(String word) { 
+		return storeRepository.findByStoreNameLike(word);
+	}
+	
+	@Override
 	@Transactional(readOnly = true, isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public List<StoreInfoVO> selectSpecificKeywordList(String keyword) {
 		logger.info("specific service");

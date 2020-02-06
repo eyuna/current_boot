@@ -63,6 +63,12 @@ public class KeywordController {
 		logger.info("major controller");
 		return keywordService.selectSpecificKeywordList(major);
 	}
+	@RequestMapping(value="/word", method = RequestMethod.GET)
+	public List<StoreInfoVO> getSearchByWord(@RequestParam(value="word") String word) {
+		logger.info("word search controller");
+		logger.info("word: " + word);
+		return keywordService.selectStoreByWord("%" + word + "%");
+	}
 	
 	
 }
