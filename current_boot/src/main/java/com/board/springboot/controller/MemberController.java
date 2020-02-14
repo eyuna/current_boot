@@ -23,11 +23,11 @@ public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
 	@RequestMapping(value="", method = RequestMethod.GET)
-	public void insertMember(@RequestParam("uid") String uid
+	public void insertMember(@RequestParam("uname") String uname
 			, @RequestParam("upw") String upw
 			, @RequestParam("uemail") String uemail) {
 		logger.info("member default controller");
-		memberService.insertMember(uid, upw, uemail);
+		memberService.insertMember(uname, upw, uemail);
 	}
 
 }

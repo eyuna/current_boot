@@ -1,11 +1,15 @@
 package com.board.springboot.service;
 
+import java.util.Arrays;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.board.springboot.controller.MemberController;
+import com.board.springboot.dao.MemberAuthVO;
 import com.board.springboot.dao.MemberVO;
 import com.board.springboot.repository.MemberRepository;
 
@@ -18,14 +22,20 @@ public class MemberServiceImpl implements MemberService {
 	MemberRepository memberRepository;
 	
 	@Override
-	public void insertMember(String uid, String upw, String uemail) {
+	public void insertMember(String uname, String upw, String uemail) {
+		logger.info("email: " + uemail);
 		MemberVO member = new MemberVO();
-		member.setUid(uid);
-		member.setUpw(upw);
+		MemberAuthVO mauth = new MemberAuthVO();
 		member.setUemail(uemail);
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		member.setUpw(passwordEncoder.encode(upw));
+		member.setUname(uname);
+		
+		mauth.setAuthority("ROLE_USER");
+		member.setMAuth(Arrays.asList(mauth));
 		MemberVO returnedMember = memberRepository.save(member);
 		
-		logger.info("Returned Account ID is " + returnedMember.getUid());
+		logger.info("Returned Account ID is " + returnedMember.getUname());
 
 	}	
 }
