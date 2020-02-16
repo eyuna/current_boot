@@ -37,5 +37,13 @@ public class MemberServiceImpl implements MemberService {
 		
 		logger.info("Returned Account ID is " + returnedMember.getUname());
 
+	}
+
+	@Override
+	public MemberVO selectStoreByEmail(String uemail) {
+		return memberRepository.findByUemail(uemail);
 	}	
+	
+	
+	
 }
