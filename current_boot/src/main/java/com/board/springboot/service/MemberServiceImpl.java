@@ -40,7 +40,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public MemberVO selectStoreByEmail(String uemail) {
+	public MemberVO selectMemberByEmail(String uemail) {
 		return memberRepository.findByUemail(uemail);
 	}	
 	

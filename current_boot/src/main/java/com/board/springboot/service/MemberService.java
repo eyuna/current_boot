@@ -8,5 +8,5 @@ import com.board.springboot.dao.StoreInfoVO;
 public interface MemberService {
 
 	public void insertMember(String uname, String upw, String uemail);
-	public MemberVO selectStoreByEmail(String uemail);
+	public MemberVO selectMemberByEmail(String uemail);
 }
